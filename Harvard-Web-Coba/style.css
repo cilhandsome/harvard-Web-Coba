@@ -1,0 +1,156 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.card-premium{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+}
+
+.card-premium:hover{
+    transform:translateY(-10px);
+    border-color:#D4AF37;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.btn-premium{
+    transition:.4s ease;
+}
+
+.btn-premium:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.reveal{
+    position:relative;
+    opacity:0;
+    transform:translateY(80px);
+    transition:all 1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.floating{
+    animation:floating 4s ease-in-out infinite;
+}
+
+@keyframes floating{
+    0%{transform:translateY(0px)}
+    50%{transform:translateY(-12px)}
+    100%{transform:translateY(0px)}
+}
+
+.glow-red{
+    box-shadow:0 0 25px rgba(227,30,36,.45);
+}
+
+.border-gold{
+    border:1px solid rgba(212,175,55,.35);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#D4AF37;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#000;
+}
+
+/* SMOOTH SCROLL */
+html{
+    scroll-behavior:smooth;
+}
+
+/* PREMIUM GLOW */
+.glow-red{
+    box-shadow:
+    0 0 20px rgba(227,30,36,0.4),
+    0 0 40px rgba(227,30,36,0.2);
+}
+
+/* GOLD TEXT */
+.gold-text{
+    background: linear-gradient(
+        135deg,
+        #D4AF37,
+        #FFE27A,
+        #B8860B
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* BUTTON HOVER */
+.btn-premium{
+    transition:all .35s ease;
+}
+
+.btn-premium:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px rgba(227,30,36,0.35);
+}
+
+/* HERO ANIMATION */
+.hero-fade{
+    animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* IMAGE EFFECT */
+.hero-image{
+    transform:scale(1.05);
+    filter:brightness(0.7);
+}
+
+/* PREMIUM BORDER */
+.border-gold{
+    border:1px solid rgba(212,175,55,0.3);
+}
+
+/* SECTION SPACING */
+.section-padding{
+    padding:120px 20px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    h1{
+        line-height:1.1 !important;
+    }
+
+}
