@@ -48,6 +48,5 @@ const menu = document.getElementById("nav-menu");
 if (btn && menu) {
     btn.addEventListener("click", () => {
         menu.classList.toggle("hidden");
-        menu.classList.toggle("flex");
     });
 }
