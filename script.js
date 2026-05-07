@@ -41,3 +41,13 @@ const observer = new IntersectionObserver((entries)=>{
 document.querySelectorAll(".hidden-section").forEach((el)=>{
     observer.observe(el);
 });
+// HAMBURGER MENU
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("nav-menu");
+
+if (btn && menu) {
+    btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+    });
+}
