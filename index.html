@@ -510,7 +510,7 @@
       class="flex gap-8 transition-transform duration-700 ease-in-out">
 
         <!-- CARD 1 -->
-        <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+        <div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
 
           <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
             ★★★★★
@@ -541,7 +541,7 @@
         </div>
 
         <!-- CARD 2 -->
-        <div class="min-w-[320px] md:min-w-[380px] bg-black text-white rounded-[32px] p-10 shadow-2xl">
+        <div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-black text-white rounded-[32px] p-10 shadow-2xl">
 
           <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
             ★★★★★
@@ -572,7 +572,7 @@
         </div>
 
         <!-- CARD 3 -->
-        <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+        <div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
 
           <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
             ★★★★★
@@ -602,9 +602,8 @@
 
         </div>
         <!-- CARD 4 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-black text-white rounded-[32px] p-10 shadow-2xl">
-
-  <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
+        <div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+<div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
   </div>
 
@@ -632,8 +631,9 @@
 
 </div>
 
+  
 <!-- CARD 5 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-black text-white rounded-[32px] p-10 shadow-2xl">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -664,7 +664,7 @@
 </div>
 
 <!-- CARD 6 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-black text-white rounded-[32px] p-10 shadow-2xl">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-black text-white rounded-[32px] p-10 shadow-2xl">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -694,7 +694,7 @@
 
 </div>
 <!-- CARD 7 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -725,7 +725,7 @@
 </div>
 
 <!-- CARD 8 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-black text-white rounded-[32px] p-10 shadow-2xl">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-black text-white rounded-[32px] p-10 shadow-2xl">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -756,7 +756,7 @@
 </div>
 
 <!-- CARD 9 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -787,7 +787,7 @@
 </div>
 
 <!-- CARD 10 -->
-<div class="min-w-[320px] md:min-w-[380px] bg-black text-white rounded-[32px] p-10 shadow-2xl">
+<div class="min-w-full md:min-w-[380px] flex-shrink-0 bg-black text-white rounded-[32px] p-10 shadow-2xl">
 
   <div class="flex gap-1 text-yellow-400 text-2xl mb-8">
     ★★★★★
@@ -1016,24 +1016,47 @@ class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-
     const navbar = document.getElementById("navbar");
 
     if (window.scrollY > 50) {
-
       navbar.classList.add(
         "bg-black/90",
         "backdrop-blur-lg",
         "shadow-2xl"
       );
-
     } else {
-
       navbar.classList.remove(
         "bg-black/90",
         "backdrop-blur-lg",
         "shadow-2xl"
       );
-
     }
 
   });
+
+
+  // TESTIMONIAL SLIDER
+  const slider = document.getElementById("testimonial-slider");
+
+  let index = 0;
+
+  function slideTestimoni() {
+
+    const cards = slider.children;
+    const total = cards.length;
+
+    index++;
+
+    if(index >= total){
+      index = 0;
+    }
+
+    const cardWidth = cards[0].offsetWidth + 32;
+
+    slider.style.transform =
+      `translateX(-${index * cardWidth}px)`;
+
+  }
+
+  setInterval(slideTestimoni, 3000);
+
 // HAMBURGER MENU
 const btn = document.getElementById("menu-btn");
 const menu = document.getElementById("nav-menu");
@@ -1042,27 +1065,7 @@ btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
 
-  // TESTIMONIAL SLIDER
-  const slider = document.getElementById("testimonial-slider");
-
-  let currentIndex = 0;
-
-  function autoSlide() {
-
-    const cardWidth = slider.children[0].offsetWidth + 32;
-
-    currentIndex++;
-
-    if (currentIndex >= slider.children.length) {
-      currentIndex = 0;
-    }
-
-    slider.style.transform =
-      `translateX(-${currentIndex * cardWidth}px)`;
-
-  }
-
-  setInterval(autoSlide, 3000);
+ 
   const btn = document.getElementById("menu-btn");
   const menu = document.getElementById("nav-menu");
   const backdrop = document.getElementById("backdrop");
