@@ -66,6 +66,7 @@ html{
 /* GOLD TEXT */
 .gold-text{
     background: linear-gradient(135deg,#D4AF37,#FFE27A,#B8860B);
+    background-clip:text;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
