@@ -1572,6 +1572,157 @@ transition-all duration-300 z-40 transition-all duration-300 ease-in-out z-40">
 
   </div>
 
+<!-- FAQ -->
+<section id="faq" class="py-28 bg-black text-white overflow-hidden">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- HEADING -->
+    <div class="text-center mb-20">
+
+      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
+        FAQ
+      </p>
+
+      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
+        Pertanyaan yang
+        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+          Sering Ditanyakan
+        </span>
+      </h2>
+
+      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
+        Beberapa pertanyaan umum seputar kursus mengemudi
+        Harvard Bina Prestasi Bandung.
+      </p>
+
+    </div>
+
+    <!-- FAQ LIST -->
+    <div class="space-y-5">
+
+      <!-- ITEM -->
+      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+        <button
+          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
+
+          <span class="text-xl font-bold">
+            Apakah cocok untuk pemula?
+          </span>
+
+          <span class="faq-icon text-3xl text-yellow-400">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
+          Sangat cocok. Sistem pembelajaran kami dirancang khusus
+          untuk pemula agar lebih nyaman, santai, dan percaya diri
+          saat belajar mengemudi.
+        </div>
+
+      </div>
+
+      <!-- ITEM -->
+      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+        <button
+          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
+
+          <span class="text-xl font-bold">
+            Apakah bisa memilih mobil manual atau matic?
+          </span>
+
+          <span class="faq-icon text-3xl text-yellow-400">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
+          Ya, tersedia pilihan mobil manual maupun matic sesuai
+          kebutuhan dan kenyamanan peserta kursus.
+        </div>
+
+      </div>
+
+      <!-- ITEM -->
+      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+        <button
+          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
+
+          <span class="text-xl font-bold">
+            Apakah tersedia antar jemput?
+          </span>
+
+          <span class="faq-icon text-3xl text-yellow-400">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
+          Ya, untuk paket tertentu tersedia layanan antar jemput
+          area Kota Bandung dan sekitarnya.
+        </div>
+
+      </div>
+
+      <!-- ITEM -->
+      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+        <button
+          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
+
+          <span class="text-xl font-bold">
+            Apakah instruktur bersertifikasi?
+          </span>
+
+          <span class="faq-icon text-3xl text-yellow-400">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
+          Seluruh instruktur Harvard Bina Prestasi telah memiliki
+          sertifikasi kompetensi resmi BNSP minimal Level 4.
+        </div>
+
+      </div>
+
+      <!-- ITEM -->
+      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
+
+        <button
+          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
+
+          <span class="text-xl font-bold">
+            Bagaimana cara daftar kursus?
+          </span>
+
+          <span class="faq-icon text-3xl text-yellow-400">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
+          Anda dapat langsung menghubungi WhatsApp Harvard Bina Prestasi
+          untuk konsultasi dan pendaftaran.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 </section>
   <!-- FOOTER -->
   <footer class="bg-black border-t border-white/10 py-10 text-center text-gray-500">
@@ -1657,6 +1808,29 @@ if (btn && menu) {
         }
         setInterval(slideTestimoni, 3000);
       }
+
+ // FAQ ACCORDION
+ const faqBtns = document.querySelectorAll(".faq-btn");
+
+ faqBtns.forEach((btn) => {
+
+   btn.addEventListener("click", () => {
+
+     const content = btn.nextElementSibling;
+     const icon = btn.querySelector(".faq-icon");
+
+     content.classList.toggle("hidden");
+
+     if (content.classList.contains("hidden")) {
+       icon.textContent = "+";
+     } else {
+       icon.textContent = "−";
+     }
+
+   });
+
+ });
+
 
   </script>
 
