@@ -714,38 +714,38 @@
 
         <div class="space-y-4 mt-12">
           <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
-            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false" aria-controls="faq-answer-1">
               <span>Apakah cocok untuk pemula?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
             </button>
-            <div class="faq-content px-6 text-gray-400 leading-relaxed">Sistem pembelajaran dirancang agar peserta dapat belajar secara bertahap, nyaman, dan percaya diri.</div>
+            <div id="faq-answer-1" class="faq-content px-6 text-gray-400 leading-relaxed" hidden>Sistem pembelajaran dirancang agar peserta dapat belajar secara bertahap, nyaman, dan percaya diri.</div>
           </div>
 
           <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
-            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false" aria-controls="faq-answer-2">
               <span>Apakah bisa memilih mobil manual atau matic?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
             </button>
-            <div class="faq-content px-6 text-gray-400 leading-relaxed">Ya, tersedia pilihan mobil manual maupun matic sesuai kebutuhan dan kenyamanan peserta.</div>
+            <div id="faq-answer-2" class="faq-content px-6 text-gray-400 leading-relaxed" hidden>Ya, tersedia pilihan mobil manual maupun matic sesuai kebutuhan dan kenyamanan peserta.</div>
           </div>
 
           <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
-            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false" aria-controls="faq-answer-3">
               <span>Apakah tersedia antar jemput?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
             </button>
-            <div class="faq-content px-6 text-gray-400 leading-relaxed">Untuk paket tertentu tersedia layanan antar jemput area Kota Bandung dan sekitarnya.</div>
+            <div id="faq-answer-3" class="faq-content px-6 text-gray-400 leading-relaxed" hidden>Untuk paket tertentu tersedia layanan antar jemput area Kota Bandung dan sekitarnya.</div>
           </div>
 
           <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
-            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false" aria-controls="faq-answer-4">
               <span>Apakah instruktur bersertifikasi?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
             </button>
-            <div class="faq-content px-6 text-gray-400 leading-relaxed">Menurut informasi yang digunakan pada website ini, instruktur Harvard Bina Prestasi memiliki sertifikasi kompetensi BNSP minimal Level 4.</div>
+            <div id="faq-answer-4" class="faq-content px-6 text-gray-400 leading-relaxed" hidden>Menurut informasi yang digunakan pada website ini, instruktur Harvard Bina Prestasi memiliki sertifikasi kompetensi BNSP minimal Level 4.</div>
           </div>
 
           <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
-            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold" aria-expanded="false" aria-controls="faq-answer-5">
               <span>Bagaimana cara daftar kursus?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
             </button>
-            <div class="faq-content px-6 text-gray-400 leading-relaxed">Anda dapat langsung menghubungi WhatsApp Harvard Bina Prestasi untuk konsultasi dan pendaftaran.</div>
+            <div id="faq-answer-5" class="faq-content px-6 text-gray-400 leading-relaxed" hidden>Anda dapat langsung menghubungi WhatsApp Harvard Bina Prestasi untuk konsultasi dan pendaftaran.</div>
           </div>
         </div>
       </div>
@@ -857,7 +857,7 @@
   </a>
 
   <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-5" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+  <div id="lightbox" class="lightbox fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-5" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true" inert>
     <button id="lightbox-close" type="button" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-white text-2xl" aria-label="Tutup">×</button>
     <div class="max-w-5xl w-full text-center">
       <img id="lightbox-image" alt="" class="max-h-[78vh] w-auto max-w-full mx-auto rounded-2xl shadow-2xl">
@@ -926,8 +926,15 @@
 
           item.classList.toggle("open", !wasOpen);
           btn.setAttribute("aria-expanded", String(!wasOpen));
+          const answer = document.getElementById(btn.getAttribute("aria-controls"));
+          if (answer) answer.hidden = wasOpen;
           document.querySelectorAll(".faq-item").forEach(otherItem => {
-            if (otherItem !== item) otherItem.querySelector(".faq-btn")?.setAttribute("aria-expanded", "false");
+            if (otherItem !== item) {
+              const otherButton = otherItem.querySelector(".faq-btn");
+              otherButton?.setAttribute("aria-expanded", "false");
+              const otherAnswer = otherButton && document.getElementById(otherButton.getAttribute("aria-controls"));
+              if (otherAnswer) otherAnswer.hidden = true;
+            }
           });
         });
       });
@@ -967,6 +974,7 @@
       const lightbox = document.getElementById("lightbox");
       const lightboxImage = document.getElementById("lightbox-image");
       const lightboxTitle = document.getElementById("lightbox-title");
+      let lightboxTrigger = null;
 
       document.querySelectorAll(".gallery-card").forEach(card => {
         card.addEventListener("click", () => {
@@ -974,14 +982,23 @@
           lightboxImage.src = card.dataset.image;
           lightboxImage.alt = card.dataset.title || "";
           lightboxTitle.textContent = card.dataset.title || "";
+          lightboxTrigger = card;
+          lightbox.removeAttribute("inert");
+          lightbox.setAttribute("aria-hidden", "false");
           lightbox.classList.add("open");
           document.body.style.overflow = "hidden";
+          document.getElementById("lightbox-close")?.focus();
         });
       });
 
       function closeLightbox() {
+        if (!lightbox || !lightbox.classList.contains("open")) return;
         lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightbox.setAttribute("inert", "");
         document.body.style.overflow = "";
+        lightboxTrigger?.focus();
+        lightboxTrigger = null;
       }
 
       document.getElementById("lightbox-close")?.addEventListener("click", closeLightbox);
@@ -989,7 +1006,12 @@
         if (e.target === lightbox) closeLightbox();
       });
       document.addEventListener("keydown", e => {
+        if (!lightbox?.classList.contains("open")) return;
         if (e.key === "Escape") closeLightbox();
+        if (e.key === "Tab") {
+          e.preventDefault();
+          document.getElementById("lightbox-close")?.focus();
+        }
       });
     })();
   </script>
