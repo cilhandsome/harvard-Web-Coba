@@ -1,2010 +1,939 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harvard Bina Prestasi Bandung</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- FONT -->
+  <title>Kursus Mengemudi Harvard Bina Prestasi Bandung | Les Stir Mobil</title>
+  <meta name="description" content="Harvard Bina Prestasi Bandung menyediakan kursus mengemudi mobil manual dan matic dengan instruktur profesional, armada nyaman, dan pembelajaran yang aman serta percaya diri.">
+  <meta name="keywords" content="kursus mengemudi Bandung, les mobil Bandung, kursus stir mobil Bandung, Harvard Bina Prestasi">
+  <meta name="author" content="Harvard Bina Prestasi Bandung">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050505">
+
+  <link rel="canonical" href="https://cilhandsome.github.io/harvard-Web-Coba/">
+  <meta property="og:title" content="Harvard Bina Prestasi Bandung">
+  <meta property="og:description" content="Kursus mengemudi profesional di Bandung dengan pembelajaran aman, nyaman, dan percaya diri.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cilhandsome.github.io/harvard-Web-Coba/">
+  <meta property="og:image" content="https://cilhandsome.github.io/harvard-Web-Coba/Assets/hero-car.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- TAILWIND -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- ICON -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Plus Jakarta Sans", "sans-serif"] },
+          colors: {
+            brand: {
+              red: "#e31e24",
+              gold: "#d4af37",
+              dark: "#050505"
+            }
+          },
+          boxShadow: {
+            premium: "0 24px 70px rgba(0,0,0,.18)",
+            redglow: "0 12px 40px rgba(227,30,36,.25)"
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
+    :root {
+      --red: #e31e24;
+      --gold: #d4af37;
+      --gold-light: #ffe082;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #000;
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: #050505;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    img { display: block; }
+
+    .container-premium {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #d4af37, #ffe082, #d4af37);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShift 5s linear infinite;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.63) 45%, rgba(0,0,0,.35) 100%),
+        linear-gradient(0deg, rgba(0,0,0,.72) 0%, transparent 45%);
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
-    .gold-text {      
-        background: linear-gradient(to right, #D4AF37, #FFE082);
+    .section-kicker {
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 800;
+    }
 
-        background-clip: text;
-        -webkit-background-clip: text;
+    .card-hover {
+      transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease;
+    }
 
-        -webkit-text-fill-color: transparent;
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.18);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .float-slow { animation: floatSlow 5s ease-in-out infinite; }
+
+    .shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shimmer::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 -120%;
+      width: 70%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.18), transparent);
+      transform: skewX(-18deg);
+      transition: left .8s ease;
+      pointer-events: none;
+    }
+
+    .shimmer:hover::after { left: 140%; }
+
+    .nav-scrolled {
+      background: rgba(5,5,5,.90) !important;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 10px 35px rgba(0,0,0,.25);
+    }
+
+    .mobile-open { display: flex !important; }
+
+    .faq-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .3s ease, padding .3s ease;
+    }
+
+    .faq-item.open .faq-content {
+      max-height: 300px;
+      opacity: 1;
+      padding-bottom: 24px;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-icon { transition: transform .3s ease; }
+
+    .testimonial-track {
+      display: flex;
+      gap: 20px;
+      transition: transform .65s ease;
+    }
+
+    .testimonial-card {
+      flex: 0 0 min(350px, calc(100vw - 56px));
+    }
+
+    .gallery-img {
+      transition: transform .7s ease;
+    }
+
+    .gallery-card:hover .gallery-img { transform: scale(1.07); }
+
+    .lightbox {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes goldShift {
+      to { background-position: 200% center; }
+    }
+
+    @media (max-width: 767px) {
+      .container-premium { width: min(100% - 28px, 1180px); }
+      .hero-title { font-size: clamp(2.55rem, 13vw, 4.5rem); }
+      .section-title { font-size: clamp(2.2rem, 10vw, 3.8rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
       }
-
-      .hero-overlay {
-        background:
-          linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5)),
-          linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-      }
-
-      .glow-red {
-        box-shadow: 0 0 30px rgba(227, 30, 36, 0.4);
-      }
-
-      .card-hover {
-        transition: 0.4s;
-      }
-
-      .card-hover:hover {
-        transform: translateY(-10px);
-      }
-
-      .navbar-scroll {
-        background: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-      }
+    }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DrivingSchool",
+    "name": "Harvard Bina Prestasi",
+    "url": "https://cilhandsome.github.io/harvard-Web-Coba/",
+    "telephone": "+6282158567799",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Laswi No.16",
+      "addressLocality": "Bandung",
+      "addressRegion": "Jawa Barat",
+      "addressCountry": "ID"
+    }
+  }
+  </script>
 </head>
 
-<body class="text-white">
+<body id="top">
 
   <!-- NAVBAR -->
-  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black">
-
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-
-      <!-- LOGO -->
-      <a href="#" class="flex items-center gap-3">
-
-        <img src="Assets/Logo.png" class="w-12 h-12 object-contain">
-      
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="container-premium h-[76px] flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 shrink-0" aria-label="Harvard Bina Prestasi - Beranda">
+        <img src="Assets/Logo.png" alt="Logo Harvard Bina Prestasi" class="w-11 h-11 md:w-12 md:h-12 object-contain">
         <div>
-          <h1 class="font-extrabold text-xl">HARVARD</h1>
-          <p class="text-xs tracking-[4px] text-gray-400">BINA PRESTASI</p>
+          <div class="font-extrabold tracking-wide text-lg md:text-xl leading-none">HARVARD</div>
+          <div class="text-[9px] md:text-[10px] tracking-[.35em] text-gray-400 mt-1">BINA PRESTASI</div>
         </div>
-      
       </a>
 
-      <!-- HAMBURGER -->
-      <button id="menu-btn" class="md:hidden text-white text-3xl z-50">
+      <button id="menu-btn" type="button" class="md:hidden w-11 h-11 rounded-xl border border-white/15 bg-white/5 text-2xl" aria-label="Buka menu" aria-expanded="false">
         ☰
       </button>
 
-      <!-- MENU -->
-      <div id="nav-menu"
-class="hidden md:flex flex-col md:flex-row gap-6 md:gap-8 items-center
-absolute md:static top-20 left-0 w-full md:w-auto
-bg-black md:bg-transparent p-6 md:p-0
-transition-all duration-300 z-40 transition-all duration-300 ease-in-out z-40"> 
-
-
-        <a href="#tentang" class="hover:text-yellow-400 nav-link">Tentang</a>
-        <a href="#keunggulan" class="hover:text-yellow-400 nav-link">Keunggulan</a>
-        <a href="#paket" class="hover:text-yellow-400 nav-link">Paket</a>
-        <a href="#testimoni" class="hover:text-yellow-400 nav-link">Testimoni</a>
-        <a href="#kontak" class="hover:text-yellow-400 nav-link">Kontak</a>
-
-        <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi,%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%20%0ABisa%20minta%20informasi%20lengkapnya?%20Terima%20kasih." target="_blank"
-          class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-full font-bold glow-red">
+      <nav id="nav-menu" class="hidden md:flex items-center gap-7 lg:gap-8">
+        <a href="#tentang" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Tentang</a>
+        <a href="#keunggulan" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Keunggulan</a>
+        <a href="#armada" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Armada</a>
+        <a href="#paket" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Paket</a>
+        <a href="#testimoni" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Testimoni</a>
+        <a href="#kontak" class="nav-link text-sm font-medium text-gray-200 hover:text-yellow-400 transition">Kontak</a>
+        <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%0ABisa%20minta%20informasi%20lengkapnya%3F%20Terima%20kasih." target="_blank" rel="noopener" class="bg-red-600 hover:bg-red-700 px-5 py-3 rounded-full text-sm font-bold shadow-redglow transition hover:-translate-y-0.5">
           Daftar Sekarang
         </a>
-
-      </div>
-      <!-- BACKDROP MOBILE -->
-      <div id="backdrop" class="fixed inset-0 bg-black/60 hidden md:hidden z-30">
-      </div>
+      </nav>
     </div>
-  </nav>
+
+    <div id="mobile-panel" class="hidden md:hidden absolute top-[76px] inset-x-0 bg-[#070707]/98 border-t border-white/10 shadow-2xl">
+      <nav class="container-premium py-5 flex flex-col gap-1">
+        <a href="#tentang" class="nav-link py-3 border-b border-white/5">Tentang</a>
+        <a href="#keunggulan" class="nav-link py-3 border-b border-white/5">Keunggulan</a>
+        <a href="#armada" class="nav-link py-3 border-b border-white/5">Armada</a>
+        <a href="#paket" class="nav-link py-3 border-b border-white/5">Paket</a>
+        <a href="#testimoni" class="nav-link py-3 border-b border-white/5">Testimoni</a>
+        <a href="#kontak" class="nav-link py-3 border-b border-white/5">Kontak</a>
+        <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20Saya%20tertarik%20untuk%20ikut%20kursus%20mengemudi." target="_blank" rel="noopener" class="mt-3 bg-red-600 text-center px-5 py-3 rounded-full font-bold">Daftar Sekarang</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- HERO -->
-  <section class="relative w-full min-h-screen overflow-hidden">
+  <main>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <img src="Assets/hero-car.jpg" alt="Armada Harvard Bina Prestasi Bandung" class="absolute inset-0 w-full h-full object-cover object-center">
+      <div class="absolute inset-0 hero-overlay"></div>
 
-    <!-- Background -->
-    <img src="Assets/hero-car.jpg" class="absolute inset-0 w-full h-full object-cover">
-
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-black/70"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 min-h-screen flex items-center px-6 lg:px-20">
-
-      <div class="max-w-3xl">
-
-        <!-- Premium Badge -->
-        <div
-          class="inline-flex items-center gap-2 border border-yellow-500/40 bg-yellow-500/10 backdrop-blur-md px-4 py-2 rounded-full mb-8 shadow-lg shadow-yellow-500/10">
-
-          <!-- Animated Dot -->
-          <span class="relative flex h-3 w-3">
-
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-400"></span>
-
-          </span>
-
-          <!-- Text -->
-          <span class="text-yellow-400 text-sm lg:text-base font-semibold tracking-wide">
-            Kursus Mengemudi No.01 di Bandung
-          </span>
-
-        </div>
-
-        <!-- Heading -->
-        <h1 class="text-6xl lg:text-8xl font-bold text-white leading-tight">
-          Kuasai Jalanan dengan
-          <span
-            class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(250,204,21,0.5)]">
-            Kepercayaan Diri
-          </span>.
-        </h1>
-
-        <!-- Description -->
-        <p class="text-gray-300 mt-6 text-xl leading-relaxed">
-          Belajar menyetir aman, nyaman, profesional, dan percaya diri bersama Harvard Bina Prestasi Bandung.
-        </p>
-
-        <!-- Button -->
-        <div class="mt-8 flex flex-wrap gap-4">
-
-          <a href="https://https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi,%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%20%0ABisa%20minta%20informasi%20lengkapnya?%20Terima%20kasih." target="_blank"
-            class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold transition duration-300 hover:scale-105 shadow-xl shadow-red-600/30 hover:shadow-red-500/50">
-
-            Daftar Sekarang
-
-          </a>
-
-          <a href="#paket"
-            class="border border-white/30 hover:border-yellow-400 text-white px-8 py-4 rounded-full font-bold transition duration-300 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
-
-            Lihat Paket
-
-          </a>
-        </div>
-        <!-- STATS -->
-        <div class="mt-14 grid grid-cols-3 gap-6 max-w-2xl">
-
-          <!-- ITEM -->
-          <div class="text-center">
-
-            <h3 class="text-3xl lg:text-5xl font-extrabold text-white">
-              5,000<span class="text-yellow-400">+</span>
-            </h3>
-
-            <p class="text-gray-300 mt-2 text-sm lg:text-base">
-              Siswa Lulus
-            </p>
-
+      <div class="relative z-10 container-premium pt-28 pb-16">
+        <div class="max-w-4xl">
+          <div class="inline-flex items-center gap-2 border border-yellow-400/30 bg-yellow-400/10 backdrop-blur-md rounded-full px-4 py-2 mb-7">
+            <span class="relative flex w-2.5 h-2.5">
+              <span class="absolute inset-0 rounded-full bg-yellow-400 animate-ping"></span>
+              <span class="relative w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+            </span>
+            <span class="text-yellow-300 text-xs md:text-sm font-bold tracking-wide">Kursus Mengemudi di Bandung</span>
           </div>
 
-          <!-- ITEM -->
-          <div class="text-center border-x border-white/10">
+          <h1 class="hero-title text-6xl md:text-7xl lg:text-[84px] leading-[.98] font-extrabold tracking-tight">
+            Kuasai Jalanan dengan
+            <span class="gold-text">Kepercayaan Diri.</span>
+          </h1>
 
-            <h3 class="text-3xl lg:text-5xl font-extrabold text-white">
-              10<span class="text-yellow-400">+</span>
-            </h3>
-
-            <p class="text-gray-300 mt-2 text-sm lg:text-base">
-              Tahun Pengalaman
-            </p>
-
-          </div>
-
-          <!-- ITEM -->
-          <div class="text-center">
-
-            <h3 class="text-3xl lg:text-5xl font-extrabold text-white flex items-end justify-center gap-1">
-              100<span class="text-yellow-400 text-xl lg:text-3xl mb-1">%</span>
-            </h3>
-
-            <p class="text-gray-300 mt-2 text-sm lg:text-base">
-              Instruktur Tersertifikasi
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- TENTANG -->
-  <section id="tentang" class="py-28 bg-white text-black overflow-hidden">
-
-    <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-        <!-- IMAGE -->
-        <div class="relative">
-
-          <!-- Glow -->
-          <div class="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-yellow-400/20 blur-3xl rounded-[40px]">
-          </div>
-
-          <img src="Assets/all-heroes.jpeg" class="relative rounded-[32px] shadow-2xl object-cover w-full h-[650px]">
-
-          <!-- Floating Card -->
-          <div
-            class="absolute bottom-6 left-6 bg-black/80 backdrop-blur-lg border border-white/10 px-3 py-2 rounded-2xl text-white shadow-2xl">
-
-            <div class="flex items-center gap-3">
-
-              <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center">
-
-                <span class="text-black text-3xl leading-none">
-                  ★
-                </span>
-
-              </div>
-
-              <div>
-                <h4 class="font-bold text-xl">5/5 Rating</h4>
-                <p class="text-sm text-gray-300">
-                  Dari ratusan alumni
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- CONTENT -->
-        <div>
-
-          <p class="text-red-600 font-bold uppercase tracking-[5px] mb-4">
-            Tentang Harvard Bina Prestasi
+          <p class="mt-7 max-w-2xl text-gray-200 text-base md:text-xl leading-relaxed">
+            Belajar menyetir dengan aman, nyaman, profesional, dan percaya diri bersama Harvard Bina Prestasi Bandung.
           </p>
 
-          <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-8">
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%0ABisa%20minta%20informasi%20lengkapnya%3F%20Terima%20kasih." target="_blank" rel="noopener" class="shimmer bg-red-600 hover:bg-red-700 px-7 py-4 rounded-full font-bold shadow-redglow transition hover:-translate-y-1">
+              Daftar Sekarang
+            </a>
+            <a href="#paket" class="border border-white/25 hover:border-yellow-400 bg-white/5 hover:bg-white/10 px-7 py-4 rounded-full font-bold transition hover:-translate-y-1">
+              Lihat Paket
+            </a>
+          </div>
 
+          <div class="mt-12 grid grid-cols-3 max-w-2xl divide-x divide-white/15">
+            <div class="pr-4">
+              <div class="text-2xl md:text-4xl font-extrabold">5,000<span class="text-yellow-400">+</span></div>
+              <div class="text-gray-300 text-xs md:text-sm mt-1">Siswa Lulus</div>
+            </div>
+            <div class="px-4">
+              <div class="text-2xl md:text-4xl font-extrabold">10<span class="text-yellow-400">+</span></div>
+              <div class="text-gray-300 text-xs md:text-sm mt-1">Tahun Pengalaman</div>
+            </div>
+            <div class="pl-4">
+              <div class="text-2xl md:text-4xl font-extrabold">100<span class="text-yellow-400">%</span></div>
+              <div class="text-gray-300 text-xs md:text-sm mt-1">Instruktur Tersertifikasi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="bg-white text-black py-20 md:py-28">
+      <div class="container-premium grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="relative fade-up">
+          <div class="absolute -inset-5 bg-gradient-to-r from-red-500/15 to-yellow-400/20 blur-3xl rounded-[40px]"></div>
+          <img src="Assets/all-heroes.jpeg" alt="Harvard Bina Prestasi Bandung" class="relative w-full h-[420px] md:h-[600px] object-cover rounded-[30px] shadow-premium">
+          <div class="absolute left-5 bottom-5 bg-black/85 text-white backdrop-blur-lg rounded-2xl px-5 py-4">
+            <div class="text-yellow-400 text-xl">★★★★★</div>
+            <div class="font-bold mt-1">Pengalaman belajar yang nyaman</div>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <p class="section-kicker text-red-600 mb-4">Tentang Harvard Bina Prestasi</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold leading-tight">
             Mencetak Pengemudi Mahir,
-            <span class="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-              Bukan Sekadar Bisa Menyetir.
-            </span>
-
+            <span class="gold-text">Bukan Sekadar Bisa Menyetir.</span>
           </h2>
-
-          <p class="text-gray-600 text-lg leading-relaxed mb-6">
-            Berdiri di jantung kota Bandung, Harvard Bina Prestasi hadir untuk menghadirkan pengalaman belajar mengemudi
-            yang profesional, aman, dan nyaman.
+          <p class="text-gray-600 text-base md:text-lg leading-relaxed mt-7">
+            Berdiri di Bandung, Harvard Bina Prestasi hadir untuk menghadirkan pengalaman belajar mengemudi yang profesional, aman, dan nyaman.
           </p>
-
-          <p class="text-gray-600 text-lg leading-relaxed mb-6">
-            Kami percaya bahwa mengemudi bukan hanya soal menjalankan kendaraan, tetapi juga tentang ketenangan, etika
-            berkendara, dan kepercayaan diri di jalan raya.
+          <p class="text-gray-600 text-base md:text-lg leading-relaxed mt-5">
+            Kami percaya bahwa mengemudi bukan hanya soal menjalankan kendaraan, tetapi juga tentang ketenangan, etika berkendara, dan kepercayaan diri di jalan raya.
           </p>
-
-          <p class="text-gray-600 text-lg leading-relaxed mb-10">
-            Dengan instruktur berpengalaman, mobil premium terbaru, dan sistem pembelajaran modern, kami siap membantu
-            Anda menjadi pengemudi yang aman dan percaya diri.
+          <p class="text-gray-600 text-base md:text-lg leading-relaxed mt-5">
+            Dengan instruktur berpengalaman, armada yang nyaman, dan sistem pembelajaran yang terarah, kami membantu peserta membangun kemampuan berkendara secara bertahap.
           </p>
-
-          <!-- SIGNATURE -->
-          <div class="border-l-4 border-yellow-400 pl-6">
-
-            <img src="Assets/Logo-Harvard-pul.jpg" class="h-16 mb-3 object-contain">
-
-            <h4 class="font-bold text-2xl">
-              Mr. Rizki
-            </h4>
-
-            <p class="text-gray-500">
-              Founder & Lead Instructor
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-<!-- PROFILE KANTOR -->
-<section id="profile" class="py-28 bg-black text-white overflow-hidden">
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
-        Profile Kantor
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Tempat Belajar Mengemudi
-        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Profesional di Bandung
-        </span>
-      </h2>
-
-      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Harvard Bina Prestasi Bandung hadir sebagai lembaga kursus mengemudi
-        profesional yang fokus pada keamanan, kenyamanan, dan kepercayaan diri
-        siswa saat berkendara.
-      </p>
-
-    </div>
-
-    <!-- CONTENT -->
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-      <!-- LEFT -->
-      <div>
-
-        <div class="grid grid-cols-2 gap-4">
-
-          <!-- IMAGE 1 -->
-          <img src="Assets/Profile-1.jpg"
-            class="rounded-[28px] h-[260px] w-full object-center object-cover shadow-2xl hover:scale-[1.02] transition duration-500">
-
-          <!-- IMAGE 2 -->
-          <img src="Assets/Profile-2.jpg"
-            class="rounded-[28px] h-[260px] w-full object-center object-cover shadow-2xl hover:scale-[1.02] transition duration-500">
-
-          <!-- IMAGE 3 -->
-          <img src="Assets/Profile-3.jpg"
-            class="rounded-[36px] h-[360px] w-full object-center object-cover shadow-2xl hover:scale-[1.02] transition duration-500 col-span-2">
-
-        </div>
-
-      </div>
-
-      <!-- RIGHT -->
-      <div>
-
-        <div class="space-y-8">
-
-          <!-- ITEM -->
-          <div class="flex gap-5">
-
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-yellow-400 flex items-center justify-center text-black text-3xl font-bold">
-              10+
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-bold mb-2">
-                Tahun Pengalaman
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed">
-                Berpengalaman membantu ribuan siswa belajar mengemudi
-                dengan metode yang aman dan mudah dipahami.
-              </p>
-            </div>
-
-          </div>
-
-          <!-- ITEM -->
-          <div class="flex gap-5">
-
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-red-600 flex items-center justify-center text-white text-3xl font-bold">
-              5K+
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-bold mb-2">
-                Alumni Berpengalaman
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed">
-                Telah dipercaya oleh ribuan siswa dari berbagai kalangan
-                mulai dari pemula hingga profesional.
-              </p>
-            </div>
-
-          </div>
-<!-- ARMADA -->
-<section id="armada" class="py-28 bg-white text-black overflow-hidden">
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-red-600 font-bold uppercase tracking-[5px] mb-4">
-        Armada Kami
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Belajar Dengan
-        <span class="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-          Armada Nyaman
-        </span>
-      </h2>
-
-      <p class="text-gray-500 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Harvard Bina Prestasi menggunakan armada yang nyaman,
-        terawat, dan mudah digunakan untuk membantu siswa belajar
-        mengemudi dengan aman dan percaya diri.
-      </p>
-
-    </div>
-
-    <!-- GRID -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- CARD 1 -->
-      <div
-        class="group bg-white rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 hover:-translate-y-2 transition duration-500">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/armada-1.jpg"
-            class="w-full h-[260px] object-cover group-hover:scale-110 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Toyota Avanza
-            </h3>
-
-            <span class="bg-black text-white text-sm px-4 py-2 rounded-full">
-              Manual
-            </span>
-
-          </div>
-
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Cocok untuk pemula dengan handling nyaman
-            dan mudah dikendalikan di jalan perkotaan.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-500">
-              AC • Dual Pedal • Nyaman
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 2 -->
-      <div
-        class="group bg-black text-white rounded-[32px] overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-500">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/armada-2.jpg"
-            class="w-full h-[260px] object-cover group-hover:scale-110 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Honda Brio
-            </h3>
-
-            <span class="bg-yellow-400 text-black text-sm px-4 py-2 rounded-full font-bold">
-              Matic
-            </span>
-
-          </div>
-
-          <p class="text-gray-300 leading-relaxed mb-6">
-            Mobil modern dengan ukuran compact,
-            nyaman untuk belajar parkir dan manuver.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-400">
-              AC • Dual Pedal • Smooth Drive
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 3 -->
-      <div
-        class="group bg-white rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 hover:-translate-y-2 transition duration-500">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/armada-3.jpg"
-            class="w-full h-[260px] object-cover group-hover:scale-110 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Daihatsu Xenia
-            </h3>
-
-            <span class="bg-red-600 text-white text-sm px-4 py-2 rounded-full">
-              Manual
-            </span>
-
-          </div>
-
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Stabil, nyaman, dan cocok digunakan
-            untuk latihan di berbagai kondisi jalan.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-500">
-              AC • Dual Pedal • Aman
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-<!-- BUTTON -->
-<div class="text-center mt-10">
-
-  <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20Saya%20ingin%20bertanya%20tentang%20armada%20kursusnya"
-    target="_blank"
-    class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold transition duration-300 hover:scale-105 shadow-xl shadow-red-600/30">
-
-    Tanya Armada
-
-  </a>
-
-</div>
-
-</div>
-
-</section>
-<!-- INSTRUKTUR -->
- 
-<section id="instruktur" class="py-28 bg-black text-white overflow-hidden">
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
-        Tim Instruktur
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Dipandu Oleh
-        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Instruktur Profesional
-        </span>
-      </h2>
-
-      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Seluruh instruktur Harvard Bina Prestasi memiliki pengalaman,
-        kesabaran, dan metode pembelajaran yang nyaman untuk pemula
-        maupun yang ingin meningkatkan kemampuan berkendara.
-        Serta memiliki sertifikasi profesi BNSP minimal level 4
-      </p>
-
-    </div>
-
-    <!-- GRID -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- CARD 1 -->
-      <div
-        class="group bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition duration-500 backdrop-blur-xl">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/instruktur-1.jpeg"
-            class="w-full h-[420px] object-cover object-top group-hover:scale-105 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Kang Dikdik
-            </h3>
-
-            <span class="bg-yellow-400 text-black text-sm px-4 py-2 rounded-full font-bold">
-              Senior
-            </span>
-
-          </div>
-
-          <p class="text-gray-400 leading-relaxed mb-6">
-            Berpengalaman mengajar ribuan siswa dengan metode belajar
-            santai, aman, dan mudah dipahami untuk semua usia.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-500">
-              20+ Tahun Pengalaman
-            </div>
-
-            <div class="text-yellow-400">
-              ★★★★★
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 2 -->
-      <div
-        class="group bg-gradient-to-b from-yellow-500/10 to-transparent border border-yellow-500/30 rounded-[32px] overflow-hidden hover:-translate-y-2 transition duration-500">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/instruktur-2.jpeg"
-            class="w-full h-[420px] object-cover object-top group-hover:scale-105 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Aa Asep
-            </h3>
-
-            <span class="bg-red-600 text-white text-sm px-4 py-2 rounded-full font-bold">
-              Expert
-            </span>
-
-          </div>
-
-          <p class="text-gray-300 leading-relaxed mb-6">
-            Spesialis pembelajaran pemula dan teknik berkendara
-            di jalan raya, parkir, serta tanjakan.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-400">
-              Manual & Matic
-            </div>
-
-            <div class="text-yellow-400">
-              ★★★★★
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD 3 -->
-      <div
-        class="group bg-white/5 border border-white/10 rounded-[32px] overflow-hidden hover:-translate-y-2 transition duration-500 backdrop-blur-xl">
-
-        <!-- IMAGE -->
-        <div class="overflow-hidden">
-
-          <img src="Assets/instruktur-3.jpeg"
-            class="w-full h-[420px] object-cover object-top group-hover:scale-105 transition duration-700">
-
-        </div>
-
-        <!-- CONTENT -->
-        <div class="p-8">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <h3 class="text-2xl font-bold">
-              Kang Dika
-            </h3>
-
-            <span class="bg-white text-black text-sm px-4 py-2 rounded-full font-bold">
-              Trainer
-            </span>
-
-          </div>
-
-          <p class="text-gray-400 leading-relaxed mb-6">
-            Fokus membantu siswa meningkatkan rasa percaya diri
-            saat berkendara di area padat dan jalan besar.
-          </p>
-
-          <div class="flex items-center justify-between">
-
-            <div class="text-sm text-gray-500">
-              Friendly Instructor
-            </div>
-
-            <div class="text-yellow-400">
-              ★★★★★
-            </div>
-
+          <div class="mt-8 border-l-4 border-yellow-400 pl-5">
+            <img src="Assets/Logo-Harvard-pul.jpg" alt="Harvard Bina Prestasi" class="h-14 object-contain object-left mb-3">
+            <div class="font-bold text-xl">Mr. Rizki</div>
+            <div class="text-gray-500">Founder & Lead Instructor</div>
           </div>
         </div>
       </div>
-    
-       <!-- ITEM -->
-          <div class="flex gap-5">
+    </section>
 
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-white flex items-center justify-center text-black text-3xl font-bold">
-              ✓
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-bold mb-2">
-                Legal & Profesional
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed">
-                Didukung instruktur berpengalaman dan sistem pembelajaran
-                modern untuk meningkatkan rasa percaya diri di jalan raya.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- BUTTON -->
-<div class="mt-12">
-
-  <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20Saya%20Tertarik%20untuk%20Ikut%20Kursus%20Mengemudi%2C%20bisa%20minta%20informasi%20lengkapnya%3F"
-    target="_blank"
-    class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 px-8 py-4 rounded-full font-bold transition duration-300 hover:scale-105 shadow-xl shadow-red-600/30">
-
-    Konsultasi Sekarang
-
-  </a>
-
-</div>
-
-</div>
-</div>
-</section>
-
-  </div>
-
-</section>
-  <!-- KEUNGGULAN -->
-  <section id="keunggulan" class="py-28 bg-gray-100 text-black">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-      <div class="text-center mb-16">
-        <p class="text-red-600 font-bold uppercase tracking-[4px] mb-4">
-          Keunggulan
-        </p>
-
-        <h2 class="text-5xl font-extrabold">
-          Kenapa Memilih Kami?
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
-          <i class="ph-fill ph-steering-wheel text-5xl text-red-600"></i>
-          <h3 class="text-2xl font-bold mt-6 mb-4">
-            Instruktur Profesional
-          </h3>
-          <p class="text-gray-600">
-            Sabar, ramah, dan berpengalaman menghadapi pemula.
+    <!-- PROFILE -->
+    <section id="profile" class="bg-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-yellow-400 mb-4">Profile Kantor</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold leading-tight">
+            Tempat Belajar Mengemudi
+            <span class="gold-text">Profesional di Bandung</span>
+          </h2>
+          <p class="text-gray-400 mt-6 leading-relaxed">
+            Harvard Bina Prestasi Bandung hadir sebagai lembaga kursus mengemudi yang fokus pada keamanan, kenyamanan, dan kepercayaan diri siswa saat berkendara.
           </p>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
-          <i class="ph-fill ph-car text-5xl text-yellow-500"></i>
-          <h3 class="text-2xl font-bold mt-6 mb-4">
-            Mobil Premium
-          </h3>
-          <p class="text-gray-600">
-            Mobil terbaru, bersih, nyaman, dan aman.
-          </p>
-        </div>
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mt-16">
+          <div class="grid grid-cols-2 gap-4 fade-up">
+            <img src="Assets/Profile-1.jpg" alt="Fasilitas Harvard Bina Prestasi" class="w-full h-56 md:h-64 object-cover rounded-3xl">
+            <img src="Assets/Profile-2.jpg" alt="Kantor Harvard Bina Prestasi" class="w-full h-56 md:h-64 object-cover rounded-3xl">
+            <img src="Assets/Profile-3.jpg" alt="Area Harvard Bina Prestasi" class="col-span-2 w-full h-72 md:h-96 object-cover rounded-3xl">
+          </div>
 
-        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
-          <i class="ph-fill ph-calendar text-5xl text-black"></i>
-          <h3 class="text-2xl font-bold mt-6 mb-4">
-            Jadwal Fleksibel
-          </h3>
-          <p class="text-gray-600">
-            Bisa menyesuaikan waktu aktivitas Anda.
-          </p>
+          <div class="space-y-7 fade-up">
+            <div class="flex gap-5">
+              <div class="shrink-0 w-16 h-16 rounded-2xl bg-yellow-400 text-black flex items-center justify-center font-extrabold text-xl">10+</div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-bold">Tahun Pengalaman</h3>
+                <p class="text-gray-400 mt-2 leading-relaxed">Berpengalaman membantu siswa belajar mengemudi dengan metode yang aman dan mudah dipahami.</p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div class="shrink-0 w-16 h-16 rounded-2xl bg-red-600 flex items-center justify-center font-extrabold text-xl">5K+</div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-bold">Alumni Berpengalaman</h3>
+                <p class="text-gray-400 mt-2 leading-relaxed">Telah dipercaya oleh ribuan siswa dari berbagai kalangan, mulai dari pemula hingga peserta yang ingin meningkatkan kemampuan.</p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div class="shrink-0 w-16 h-16 rounded-2xl bg-white text-black flex items-center justify-center font-extrabold text-xl">BNSP</div>
+              <div>
+                <h3 class="text-xl md:text-2xl font-bold">Instruktur Profesional</h3>
+                <p class="text-gray-400 mt-2 leading-relaxed">Seluruh instruktur disebut memiliki sertifikasi profesi BNSP minimal Level 4.</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
-          <i class="ph-fill ph-shield-check text-5xl text-red-600"></i>
-          <h3 class="text-2xl font-bold mt-6 mb-4">
-            Aman & Nyaman
-          </h3>
-          <p class="text-gray-600">
-            Sistem belajar dibuat nyaman untuk pemula.
-          </p>
-        </div>
-
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- KEUNGGULAN -->
+    <section id="keunggulan" class="bg-gray-50 text-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-red-600 mb-4">Mengapa Harvard?</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Belajar Lebih <span class="gold-text">Nyaman & Terarah</span></h2>
+          <p class="text-gray-600 mt-6">Pengalaman kursus dirancang agar peserta dapat belajar dengan lebih tenang dan bertahap.</p>
+        </div>
 
-  <!-- PAKET -->
-  <section id="paket" class="py-28 bg-black">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-      <div class="text-center mb-20">
-        <p class="text-yellow-400 font-bold uppercase tracking-[4px] mb-4">
-          Paket Kursus
-        </p>
-
-        <h2 class="text-5xl font-extrabold">
-          Pilih Paket Terbaik
-        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+          <div class="card-hover bg-white rounded-3xl p-7 border border-gray-100 shadow-sm fade-up">
+            <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-2xl mb-5">✓</div>
+            <h3 class="font-bold text-xl">Aman</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Pembelajaran bertahap dengan perhatian pada keamanan berkendara.</p>
+          </div>
+          <div class="card-hover bg-white rounded-3xl p-7 border border-gray-100 shadow-sm fade-up">
+            <div class="w-14 h-14 rounded-2xl bg-yellow-50 text-yellow-700 flex items-center justify-center text-2xl mb-5">★</div>
+            <h3 class="font-bold text-xl">Profesional</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Didampingi instruktur dengan pengalaman dan sertifikasi yang disebutkan oleh pihak usaha.</p>
+          </div>
+          <div class="card-hover bg-white rounded-3xl p-7 border border-gray-100 shadow-sm fade-up">
+            <div class="w-14 h-14 rounded-2xl bg-gray-100 text-black flex items-center justify-center text-2xl mb-5">🚗</div>
+            <h3 class="font-bold text-xl">Armada Nyaman</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Pilihan kendaraan manual dan matic untuk kebutuhan latihan.</p>
+          </div>
+          <div class="card-hover bg-white rounded-3xl p-7 border border-gray-100 shadow-sm fade-up">
+            <div class="w-14 h-14 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-2xl mb-5">↗</div>
+            <h3 class="font-bold text-xl">Percaya Diri</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Materi dan latihan diarahkan agar peserta semakin terbiasa menghadapi kondisi jalan.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="grid lg:grid-cols-3 gap-10">
-
-        <!-- CARD -->
-        <div class="glass p-10 rounded-3xl border border-white/10">
-
-          <h3 class="text-3xl font-bold mb-4">
-            Basic Class
-          </h3>
-
-          <div class="text-5xl font-extrabold mb-6">
-            Rp750K
-          </div>
-
-          <ul class="space-y-4 text-gray-300 mb-10">
-            <li>✔ 6x Pertemuan</li>
-            <li>✔ Manual / Matic</li>
-            <li>✔ Teknik Dasar</li>
-            <li>✔ Parkir & Tanjakan</li>
-          </ul>
-
-          <a href="#"
-            class="block text-center bg-white text-black py-4 rounded-full font-bold hover:bg-yellow-400 transition">
-            Pilih Paket
-          </a>
-
+    <!-- ARMADA -->
+    <section id="armada" class="bg-white text-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-red-600 mb-4">Armada Kami</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Belajar Dengan <span class="gold-text">Armada Nyaman</span></h2>
+          <p class="text-gray-600 mt-6 leading-relaxed">Armada yang nyaman dan mudah digunakan untuk membantu siswa belajar mengemudi dengan aman dan percaya diri.</p>
         </div>
 
-        <!-- PREMIUM -->
-        <div
-          class="bg-gradient-to-b from-yellow-500/20 to-transparent border border-yellow-500 p-10 rounded-3xl scale-105 shadow-2xl shadow-yellow-500/10">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 mt-14">
+          <article class="card-hover bg-white rounded-[28px] overflow-hidden border border-gray-200 shadow-lg fade-up">
+            <div class="h-64 overflow-hidden">
+              <img src="Assets/armada-1.jpg" alt="Toyota Avanza Harvard Bina Prestasi" class="w-full h-full object-cover gallery-img">
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-2xl font-extrabold">Toyota Avanza</h3>
+                <span class="shrink-0 bg-black text-white text-xs font-bold px-3 py-2 rounded-full">MANUAL</span>
+              </div>
+              <p class="text-gray-600 mt-4 leading-relaxed">Cocok untuk pemula dengan handling nyaman dan mudah dikendalikan di jalan perkotaan.</p>
+              <div class="mt-6 pt-5 border-t border-gray-100 text-sm text-gray-500">AC • Dual Pedal • Nyaman</div>
+            </div>
+          </article>
 
-          <div class="bg-yellow-400 text-black inline-block px-4 py-2 rounded-full text-sm font-bold mb-6">
-            PALING DIMINATI
-          </div>
+          <article class="card-hover bg-[#080808] text-white rounded-[28px] overflow-hidden shadow-2xl fade-up">
+            <div class="h-64 overflow-hidden">
+              <img src="Assets/armada-2.jpg" alt="Honda Brio Harvard Bina Prestasi" class="w-full h-full object-cover gallery-img">
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-2xl font-extrabold">Honda Brio</h3>
+                <span class="shrink-0 bg-yellow-400 text-black text-xs font-bold px-3 py-2 rounded-full">MATIC</span>
+              </div>
+              <p class="text-gray-300 mt-4 leading-relaxed">Mobil compact yang nyaman untuk latihan parkir, manuver, dan berkendara di area perkotaan.</p>
+              <div class="mt-6 pt-5 border-t border-white/10 text-sm text-gray-400">AC • Dual Pedal • Smooth Drive</div>
+            </div>
+          </article>
 
-          <h3 class="text-3xl font-bold mb-4 text-yellow-400">
-            Premium Class
-          </h3>
-
-          <div class="text-5xl font-extrabold mb-6">
-            Rp1.5JT
-          </div>
-
-          <ul class="space-y-4 text-gray-300 mb-10">
-            <li>✔ 12x Pertemuan</li>
-            <li>✔ Manual + Matic</li>
-            <li>✔ Jalan Raya & Tol</li>
-            <li>✔ Pendampingan SIM</li>
-            <li>✔ Antar Jemput</li>
-          </ul>
-
-          <a href="#"
-            class="block text-center bg-red-600 py-4 rounded-full font-bold hover:bg-red-700 transition glow-red">
-            Ambil Premium
-          </a>
-
+          <article class="card-hover bg-white rounded-[28px] overflow-hidden border border-gray-200 shadow-lg fade-up">
+            <div class="h-64 overflow-hidden">
+              <img src="Assets/armada-3.jpg" alt="Daihatsu Xenia Harvard Bina Prestasi" class="w-full h-full object-cover gallery-img">
+            </div>
+            <div class="p-7">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-2xl font-extrabold">Daihatsu Xenia</h3>
+                <span class="shrink-0 bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full">MANUAL</span>
+              </div>
+              <p class="text-gray-600 mt-4 leading-relaxed">Stabil, nyaman, dan cocok digunakan untuk latihan di berbagai kondisi jalan.</p>
+              <div class="mt-6 pt-5 border-t border-gray-100 text-sm text-gray-500">AC • Dual Pedal • Aman</div>
+            </div>
+          </article>
         </div>
 
-        <!-- REFRESH -->
-        <div class="glass p-10 rounded-3xl border border-white/10">
-
-          <h3 class="text-3xl font-bold mb-4">
-            Refresh Class
-          </h3>
-
-          <div class="text-5xl font-extrabold mb-6">
-            Rp500K
-          </div>
-
-          <ul class="space-y-4 text-gray-300 mb-10">
-            <li>✔ 3x Pertemuan</li>
-            <li>✔ Mental Driving</li>
-            <li>✔ Teknik Jalan Sulit</li>
-            <li>✔ Mobil Pribadi / Kursus</li>
-          </ul>
-
-          <a href="#"
-            class="block text-center bg-white text-black py-4 rounded-full font-bold hover:bg-yellow-400 transition">
-            Pilih Paket
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TESTIMONI -->
-  <section id="testimoni"
-  class="py-28 bg-gradient-to-b from-white to-gray-100 text-black overflow-hidden w-full">
-
-    <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-      <!-- HEADING -->
-      <div class="text-center mb-20">
-
-        <p class="text-red-600 font-bold uppercase tracking-[5px] mb-4">
-          Review Alumni
-        </p>
-
-        <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-          Apa Kata
-          <span class="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-            Mereka?
-          </span>
-        </h2>
-
-        <p class="text-gray-500 text-lg mt-6 max-w-2xl mx-auto">
-          Ribuan alumni telah mempercayakan proses belajar mengemudi mereka bersama Harvard Bina Prestasi Bandung.
-        </p>
-
-      </div>
-
-      <!-- SLIDER -->
-      <div id="testimonial-slider"
-        class="flex gap-5 transition-transform duration-700 ease-in-out">
-      
-        <!-- CARD 1 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Instrukturnya sabar banget dan cara ngajarnya mudah dipahami.
-              Sekarang saya lebih percaya diri membawa mobil sendiri.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-yellow-400 flex items-center justify-center text-white font-bold text-xl">
-              A
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Anisa Putri</h4>
-              <p class="text-gray-500 text-sm">Mahasiswi</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 2 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Mobilnya nyaman, bersih, dan jadwal fleksibel.
-              Pelayanannya terasa premium dibanding tempat lain.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-yellow-400 to-red-500 flex items-center justify-center text-black font-bold text-xl">
-              B
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Budi Santoso</h4>
-              <p class="text-gray-400 text-sm">Karyawan Swasta</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 3 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Awalnya takut nyetir sendiri, sekarang sudah berani
-              bawa mobil ke luar kota.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-black to-gray-700 flex items-center justify-center text-white font-bold text-xl">
-              C
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Citra Lestari</h4>
-              <p class="text-gray-500 text-sm">Ibu Rumah Tangga</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 4 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Belajarnya santai tapi cepat paham.
-              Instruktur sangat profesional.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-orange-400 flex items-center justify-center text-white font-bold text-xl">
-              D
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Deni Ramadhan</h4>
-              <p class="text-gray-400 text-sm">Entrepreneur</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 5 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Awalnya benar-benar belum pernah menyetir.
-              Setelah beberapa pertemuan jadi pede.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center text-black font-bold text-xl">
-              E
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Eka Maharani</h4>
-              <p class="text-gray-500 text-sm">Pegawai Bank</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 6 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Recommended banget buat pemula.
-              Mobil nyaman dan instruktur membantu.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-green-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xl">
-              F
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Fajar Nugroho</h4>
-              <p class="text-gray-400 text-sm">Freelancer</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 7 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Pelayanan sangat ramah dan sabar.
-              Cocok banget buat yang masih takut belajar nyetir.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-pink-400 to-red-500 flex items-center justify-center text-white font-bold text-xl">
-              G
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Gina Amelia</h4>
-              <p class="text-gray-500 text-sm">Content Creator</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 8 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Materi parkir dan tanjakan dijelaskan dengan detail.
-              Sangat membantu untuk pemula.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold text-xl">
-              H
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Hendra Wijaya</h4>
-              <p class="text-gray-400 text-sm">Mahasiswa</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 9 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Belajar jadi lebih nyaman karena suasananya tidak tegang
-              dan instruktur komunikatif.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-orange-400 to-yellow-500 flex items-center justify-center text-white font-bold text-xl">
-              I
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Intan Permata</h4>
-              <p class="text-gray-500 text-sm">Pegawai Swasta</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 10 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Sangat worth it dengan fasilitas dan kualitas
-              pengajar yang diberikan.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-xl">
-              J
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Joko Prasetyo</h4>
-              <p class="text-gray-400 text-sm">Teknisi</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 11 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-white rounded-[32px] p-8 shadow-2xl border border-gray-100 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-600 leading-relaxed italic">
-              “Instruktur datang tepat waktu dan proses belajar
-              sangat terstruktur.”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-lime-400 to-green-500 flex items-center justify-center text-white font-bold text-xl">
-              K
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Karin Oktavia</h4>
-              <p class="text-gray-500 text-sm">Desainer</p>
-            </div>
-          </div>
-        </div>
-      
-        <!-- CARD 12 -->
-        <div
-          class="min-w-[280px] max-w-[280px] h-[320px] flex-shrink-0 bg-black text-white rounded-[32px] p-8 shadow-2xl border border-white/10 flex flex-col justify-between">
-      
-          <div>
-            <div class="flex gap-1 text-yellow-400 text-2xl mb-6">★★★★★</div>
-      
-            <p class="text-gray-300 leading-relaxed italic">
-              “Sekarang saya sudah berani nyetir sendiri ke kantor
-              setiap hari. Terima kasih Harvard!”
-            </p>
-          </div>
-      
-          <div class="flex items-center gap-4">
-            <div
-              class="w-14 h-14 rounded-full bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl">
-              L
-            </div>
-      
-            <div>
-              <h4 class="font-bold text-lg">Luthfi Akbar</h4>
-              <p class="text-gray-400 text-sm">Staff Kantor</p>
-            </div>
-          </div>
-        </div>
-      
-      </div>     
-
-  </section>
-
-  <!-- CTA -->
-  <section class="py-28 bg-black">
-
-    <div class="max-w-5xl mx-auto px-6 text-center">
-
-      <h2 class="text-5xl font-extrabold leading-tight mb-8">
-        Saatnya Anda
-        <span class="gold-text">
-          Bisa Menyetir
-        </span>
-        Dengan Percaya Diri
-      </h2>
-
-      <p class="text-gray-400 text-xl mb-10">
-        Daftar sekarang dan mulai perjalanan Anda bersama
-        Harvard Bina Prestasi Bandung.
-      </p>
-
-      <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi,%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%20%0ABisa%20minta%20informasi%20lengkapnya?%20Terima%20kasih." target="_blank"
-        class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold inline-block glow-red transition hover:-translate-y-1 transition-all duration-300">
-
-        Daftar Sekarang
-
-      </a>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-  <section id="kontak" class="bg-black text-white py-24">
-
-    <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-      <div class="text-center mb-16">
-
-        <p class="text-red-500 font-semibold tracking-widest uppercase">
-          Hubungi Kami
-        </p>
-
-        <h2 class="text-4xl lg:text-5xl font-bold mt-4">
-          Siap Mulai Belajar Mengemudi?
-        </h2>
-
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
-          <div class="text-5xl mb-6">📱</div>
-
-          <h3 class="text-2xl font-bold mb-4">
-            WhatsApp
-          </h3>
-
-          <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi,%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%20%0ABisa%20minta%20informasi%20lengkapnya?%20Terima%20kasih." target="_blank" class="text-red-500 font-semibold">
-            0821-5856-7799
+        <div class="text-center mt-10">
+          <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20saya%20ingin%20bertanya%20tentang%20armada%20kursus." target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-7 py-4 rounded-full font-bold shadow-redglow transition hover:-translate-y-1">
+            Tanya Armada →
           </a>
         </div>
+      </div>
+    </section>
 
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
-
-          <div class="text-5xl mb-6">📍</div>
-
-          <h3 class="text-2xl font-bold mb-4">
-            Alamat
-          </h3>
-
-          <p class="text-gray-400 leading-relaxed">
-            Jl. Laswi No.16<br>
-            Batununggal, Bandung
-          </p>
-
+    <!-- INSTRUKTUR -->
+    <section id="instruktur" class="bg-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-yellow-400 mb-4">Tim Instruktur</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Dipandu Oleh <span class="gold-text">Instruktur Profesional</span></h2>
+          <p class="text-gray-400 mt-6 leading-relaxed">Instruktur Harvard Bina Prestasi memiliki pengalaman dan metode pembelajaran yang ditujukan untuk pemula maupun peserta yang ingin meningkatkan kemampuan berkendara.</p>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+          <article class="glass rounded-3xl overflow-hidden fade-up">
+            <img src="Assets/instruktur-1.jpeg" alt="Instruktur Harvard Bina Prestasi" class="w-full h-80 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold">Instruktur Profesional</h3>
+              <p class="text-gray-400 mt-2 text-sm leading-relaxed">Pendampingan belajar yang komunikatif dan bertahap.</p>
+              <span class="inline-block mt-4 bg-yellow-400 text-black text-xs font-bold px-3 py-2 rounded-full">BNSP Level 4+</span>
+            </div>
+          </article>
+          <article class="glass rounded-3xl overflow-hidden fade-up">
+            <img src="Assets/instruktur-2.jpeg" alt="Instruktur Harvard Bina Prestasi" class="w-full h-80 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold">Pendamping Belajar</h3>
+              <p class="text-gray-400 mt-2 text-sm leading-relaxed">Membantu peserta membangun kebiasaan berkendara yang lebih percaya diri.</p>
+              <span class="inline-block mt-4 bg-yellow-400 text-black text-xs font-bold px-3 py-2 rounded-full">BNSP Level 4+</span>
+            </div>
+          </article>
+          <article class="glass rounded-3xl overflow-hidden fade-up">
+            <img src="Assets/instruktur-3.jpeg" alt="Instruktur Harvard Bina Prestasi" class="w-full h-80 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-bold">Metode Bertahap</h3>
+              <p class="text-gray-400 mt-2 text-sm leading-relaxed">Latihan disesuaikan dengan kemampuan dan kebutuhan peserta.</p>
+              <span class="inline-block mt-4 bg-yellow-400 text-black text-xs font-bold px-3 py-2 rounded-full">BNSP Level 4+</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <div class="text-5xl mb-6">🕒</div>
-
-          <h3 class="text-2xl font-bold mb-4">
-            Jam Operasional
-          </h3>
-
-          <p class="text-gray-400 leading-relaxed">
-            Senin - Minggu<br>
-            08.00 - 22.00 WIB
-          </p>
-
+    <!-- PAKET -->
+    <section id="paket" class="bg-gray-50 text-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-red-600 mb-4">Paket Kursus</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Pilih Paket <span class="gold-text">Sesuai Kebutuhan</span></h2>
+          <p class="text-gray-600 mt-6">Hubungi admin untuk mendapatkan informasi harga dan detail paket terbaru.</p>
         </div>
 
+        <div class="grid md:grid-cols-3 gap-6 mt-14">
+          <article class="card-hover bg-white rounded-3xl p-7 border border-gray-200 shadow-sm fade-up">
+            <div class="text-sm font-bold text-red-600 uppercase tracking-wider">Pemula</div>
+            <h3 class="text-2xl font-extrabold mt-2">Paket Basic</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Untuk peserta yang ingin mulai belajar dari dasar.</p>
+            <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20saya%20ingin%20tahu%20detail%20Paket%20Basic." target="_blank" rel="noopener" class="block text-center mt-7 bg-black text-white py-3 rounded-full font-bold hover:bg-red-600 transition">Tanya Paket</a>
+          </article>
+
+          <article class="card-hover bg-black text-white rounded-3xl p-7 shadow-2xl relative overflow-hidden fade-up">
+            <div class="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-extrabold px-4 py-2 rounded-bl-2xl">POPULER</div>
+            <div class="text-sm font-bold text-yellow-400 uppercase tracking-wider">Berkendara</div>
+            <h3 class="text-2xl font-extrabold mt-2">Paket Regular</h3>
+            <p class="text-gray-400 mt-3 leading-relaxed">Untuk peserta yang ingin latihan lebih terstruktur dan intensif.</p>
+            <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20saya%20ingin%20tahu%20detail%20Paket%20Regular." target="_blank" rel="noopener" class="block text-center mt-7 bg-red-600 hover:bg-red-700 text-white py-3 rounded-full font-bold transition">Tanya Paket</a>
+          </article>
+
+          <article class="card-hover bg-white rounded-3xl p-7 border border-gray-200 shadow-sm fade-up">
+            <div class="text-sm font-bold text-red-600 uppercase tracking-wider">Intensif</div>
+            <h3 class="text-2xl font-extrabold mt-2">Paket Premium</h3>
+            <p class="text-gray-500 mt-3 leading-relaxed">Untuk peserta yang menginginkan pendampingan latihan lebih intensif.</p>
+            <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20saya%20ingin%20tahu%20detail%20Paket%20Premium." target="_blank" rel="noopener" class="block text-center mt-7 bg-black text-white py-3 rounded-full font-bold hover:bg-red-600 transition">Tanya Paket</a>
+          </article>
+        </div>
       </div>
+    </section>
 
-    </div>
+    <!-- TESTIMONI -->
+    <section id="testimoni" class="bg-white text-black py-20 md:py-28 overflow-hidden">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-red-600 mb-4">Testimoni</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Cerita Dari <span class="gold-text">Peserta Kami</span></h2>
+          <p class="text-gray-600 mt-6">Pengalaman peserta menjadi bagian penting dari perjalanan Harvard Bina Prestasi.</p>
+        </div>
 
-  </section>
-<!-- LOKASI -->
-<section id="lokasi" class="py-28 bg-gradient-to-b from-black to-gray-950 text-white overflow-hidden">
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
-        Lokasi Kami
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Kunjungi
-        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Kantor Kami
-        </span>
-      </h2>
-
-      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Harvard Bina Prestasi Bandung siap membantu Anda belajar mengemudi
-        dengan nyaman, aman, dan profesional.
-      </p>
-
-    </div>
-
-    <!-- GRID -->
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-
-      <!-- MAP -->
-      <div
-        class="overflow-hidden rounded-[32px] border border-white/10 shadow-2xl h-[500px]">
-
-        <iframe
-          src="https://www.google.com/maps?q=Jl.+Laswi+No.16+Bandung&output=embed"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-
+        <div class="relative mt-14 overflow-hidden">
+          <div id="testimonial-slider" class="testimonial-track">
+            <article class="testimonial-card shrink-0 bg-gray-50 rounded-3xl p-7 border border-gray-100 min-h-[300px]">
+              <div class="text-yellow-500 text-xl">★★★★★</div>
+              <p class="text-gray-600 mt-5 leading-relaxed">“Instrukturnya sabar dan penjelasannya mudah dipahami. Saya jadi lebih percaya diri saat latihan.”</p>
+              <div class="mt-8 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-bold">A</div>
+                <div><div class="font-bold">Peserta Harvard</div><div class="text-sm text-gray-500">Alumni</div></div>
+              </div>
+            </article>
+            <article class="testimonial-card shrink-0 bg-black text-white rounded-3xl p-7 min-h-[300px]">
+              <div class="text-yellow-400 text-xl">★★★★★</div>
+              <p class="text-gray-300 mt-5 leading-relaxed">“Mobil nyaman dan suasana belajar santai. Cocok untuk yang baru mulai belajar mengemudi.”</p>
+              <div class="mt-8 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-yellow-400 text-black flex items-center justify-center font-bold">R</div>
+                <div><div class="font-bold">Peserta Harvard</div><div class="text-sm text-gray-400">Alumni</div></div>
+              </div>
+            </article>
+            <article class="testimonial-card shrink-0 bg-gray-50 rounded-3xl p-7 border border-gray-100 min-h-[300px]">
+              <div class="text-yellow-500 text-xl">★★★★★</div>
+              <p class="text-gray-600 mt-5 leading-relaxed">“Latihannya bertahap sehingga saya tidak merasa terburu-buru. Terima kasih Harvard!”</p>
+              <div class="mt-8 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center font-bold">L</div>
+                <div><div class="font-bold">Luthfi Akbar</div><div class="text-sm text-gray-500">Staff Kantor</div></div>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- CONTENT -->
-      <div>
+    <!-- CTA -->
+    <section class="relative overflow-hidden bg-black py-24">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(227,30,36,.16),transparent_55%)]"></div>
+      <div class="container-premium relative text-center max-w-4xl fade-up">
+        <p class="section-kicker text-yellow-400 mb-4">Mulai Sekarang</p>
+        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Saatnya Anda <span class="gold-text">Bisa Menyetir</span> Dengan Percaya Diri</h2>
+        <p class="text-gray-400 text-lg md:text-xl mt-6">Konsultasikan kebutuhan kursus mengemudi Anda bersama Harvard Bina Prestasi Bandung.</p>
+        <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi.%0ABisa%20minta%20informasi%20lengkapnya%3F" target="_blank" rel="noopener" class="inline-flex mt-8 bg-red-600 hover:bg-red-700 px-8 py-4 rounded-full font-bold shadow-redglow transition hover:-translate-y-1">Konsultasi via WhatsApp</a>
+      </div>
+    </section>
 
-        <!-- CARD -->
-        <div
-          class="bg-white/5 border border-white/10 rounded-[32px] p-10 backdrop-blur-xl shadow-2xl">
+    <!-- KONTAK -->
+    <section id="kontak" class="bg-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center fade-up">
+          <p class="section-kicker text-red-500 mb-4">Hubungi Kami</p>
+          <h2 class="text-4xl md:text-5xl font-extrabold">Siap Mulai Belajar Mengemudi?</h2>
+        </div>
 
-          <!-- ITEM -->
-          <div class="flex gap-5 mb-10">
+        <div class="grid md:grid-cols-3 gap-5 mt-12">
+          <div class="glass rounded-3xl p-7 fade-up">
+            <div class="text-3xl mb-5">📱</div>
+            <h3 class="text-xl font-bold">WhatsApp</h3>
+            <a href="https://wa.me/6282158567799" target="_blank" rel="noopener" class="inline-block mt-3 text-red-400 font-semibold hover:text-red-300">0821-5856-7799</a>
+          </div>
+          <div class="glass rounded-3xl p-7 fade-up">
+            <div class="text-3xl mb-5">📍</div>
+            <h3 class="text-xl font-bold">Alamat</h3>
+            <p class="text-gray-400 mt-3 leading-relaxed">Jl. Laswi No.16<br>Batununggal, Bandung</p>
+          </div>
+          <div class="glass rounded-3xl p-7 fade-up">
+            <div class="text-3xl mb-5">🕒</div>
+            <h3 class="text-xl font-bold">Jam Operasional</h3>
+            <p class="text-gray-400 mt-3 leading-relaxed">Senin - Minggu<br>08.00 - 22.00 WIB</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-yellow-400 flex items-center justify-center text-black text-3xl font-bold">
+    <!-- LOKASI -->
+    <section id="lokasi" class="bg-gradient-to-b from-black to-gray-950 py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-yellow-400 mb-4">Lokasi Kami</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Kunjungi <span class="gold-text">Kantor Kami</span></h2>
+          <p class="text-gray-400 mt-6">Harvard Bina Prestasi Bandung siap membantu Anda belajar mengemudi dengan nyaman, aman, dan profesional.</p>
+        </div>
 
-              📍
-
-            </div>
-
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                Alamat
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed mb-4">
-                Jl. Laswi No.16, Batununggal,
-                Kota Bandung, Jawa Barat
-              </p>
-
-              <a href="https://maps.google.com/?q=Jl.+Laswi+No.16+Bandung"
-                target="_blank"
-                class="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold transition">
-
-                Lihat di Google Maps →
-
-              </a>
-
-            </div>
-
+        <div class="grid lg:grid-cols-2 gap-7 mt-14 items-stretch">
+          <div class="overflow-hidden rounded-[28px] border border-white/10 h-[420px] md:h-[500px] fade-up">
+            <iframe src="https://www.google.com/maps?q=Jl.+Laswi+No.16+Bandung&output=embed" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi Harvard Bina Prestasi"></iframe>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex gap-5 mb-10">
-
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-white flex items-center justify-center text-black text-3xl font-bold">
-
-              🕒
-
+          <div class="glass rounded-[28px] p-7 md:p-10 fade-up">
+            <div class="flex gap-5 pb-8 border-b border-white/10">
+              <div class="w-14 h-14 shrink-0 rounded-2xl bg-yellow-400 text-black flex items-center justify-center text-2xl">📍</div>
+              <div>
+                <h3 class="text-xl font-bold">Alamat</h3>
+                <p class="text-gray-400 mt-2 leading-relaxed">Jl. Laswi No.16, Batununggal, Kota Bandung, Jawa Barat</p>
+                <a href="https://maps.google.com/?q=Jl.+Laswi+No.16+Bandung" target="_blank" rel="noopener" class="inline-block mt-4 text-yellow-400 font-semibold">Buka Google Maps →</a>
+              </div>
             </div>
 
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                Jam Operasional
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed">
-                Senin - Minggu<br>
-                08.00 - 22.00 WIB
-              </p>
-
+            <div class="flex gap-5 py-8 border-b border-white/10">
+              <div class="w-14 h-14 shrink-0 rounded-2xl bg-white text-black flex items-center justify-center text-2xl">🕒</div>
+              <div>
+                <h3 class="text-xl font-bold">Jam Operasional</h3>
+                <p class="text-gray-400 mt-2 leading-relaxed">Senin - Minggu<br>08.00 - 22.00 WIB</p>
+              </div>
             </div>
 
+            <div class="flex gap-5 pt-8">
+              <div class="w-14 h-14 shrink-0 rounded-2xl bg-green-500 text-white flex items-center justify-center text-2xl">☎</div>
+              <div>
+                <h3 class="text-xl font-bold">WhatsApp</h3>
+                <p class="text-gray-400 mt-2">Konsultasi dan pendaftaran kursus.</p>
+                <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20saya%20ingin%20bertanya%20mengenai%20kursus%20mengemudi." target="_blank" rel="noopener" class="inline-flex mt-4 bg-green-500 hover:bg-green-600 px-5 py-3 rounded-full font-bold transition">Chat WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-black py-20 md:py-28">
+      <div class="container-premium max-w-4xl">
+        <div class="text-center fade-up">
+          <p class="section-kicker text-yellow-400 mb-4">FAQ</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Pertanyaan yang <span class="gold-text">Sering Ditanyakan</span></h2>
+          <p class="text-gray-400 mt-6">Informasi umum seputar kursus mengemudi Harvard Bina Prestasi Bandung.</p>
+        </div>
+
+        <div class="space-y-4 mt-12">
+          <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold">
+              <span>Apakah cocok untuk pemula?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
+            </button>
+            <div class="faq-content px-6 text-gray-400 leading-relaxed">Sistem pembelajaran dirancang agar peserta dapat belajar secara bertahap, nyaman, dan percaya diri.</div>
           </div>
 
-          <!-- ITEM -->
-          <div class="flex gap-5">
-
-            <div
-              class="min-w-[70px] h-[70px] rounded-2xl bg-green-500 flex items-center justify-center text-white text-3xl font-bold">
-
-              ☎
-
-            </div>
-
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                WhatsApp
-              </h3>
-
-              <p class="text-gray-400 leading-relaxed mb-4">
-                Konsultasi dan pendaftaran kursus mengemudi.
-              </p>
-
-              <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%20Saya%20ingin%20bertanya%20mengenai%20kursus%20mengemudi"
-                target="_blank"
-                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-full font-bold transition duration-300 hover:scale-105">
-
-                Chat WhatsApp
-
-              </a>
-
-            </div>
-
+          <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold">
+              <span>Apakah bisa memilih mobil manual atau matic?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
+            </button>
+            <div class="faq-content px-6 text-gray-400 leading-relaxed">Ya, tersedia pilihan mobil manual maupun matic sesuai kebutuhan dan kenyamanan peserta.</div>
           </div>
 
+          <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold">
+              <span>Apakah tersedia antar jemput?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
+            </button>
+            <div class="faq-content px-6 text-gray-400 leading-relaxed">Untuk paket tertentu tersedia layanan antar jemput area Kota Bandung dan sekitarnya.</div>
+          </div>
+
+          <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold">
+              <span>Apakah instruktur bersertifikasi?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
+            </button>
+            <div class="faq-content px-6 text-gray-400 leading-relaxed">Menurut informasi yang digunakan pada website ini, instruktur Harvard Bina Prestasi memiliki sertifikasi kompetensi BNSP minimal Level 4.</div>
+          </div>
+
+          <div class="faq-item bg-white/5 border border-white/10 rounded-2xl overflow-hidden fade-up">
+            <button type="button" class="faq-btn w-full flex items-center justify-between gap-5 text-left p-6 font-bold">
+              <span>Bagaimana cara daftar kursus?</span><span class="faq-icon text-yellow-400 text-2xl">+</span>
+            </button>
+            <div class="faq-content px-6 text-gray-400 leading-relaxed">Anda dapat langsung menghubungi WhatsApp Harvard Bina Prestasi untuk konsultasi dan pendaftaran.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="bg-gradient-to-b from-gray-950 to-black py-20 md:py-28">
+      <div class="container-premium">
+        <div class="text-center max-w-3xl mx-auto fade-up">
+          <p class="section-kicker text-yellow-400 mb-4">Gallery</p>
+          <h2 class="section-title text-4xl md:text-6xl font-extrabold">Momen Belajar <span class="gold-text">Bersama Kami</span></h2>
+          <p class="text-gray-400 mt-6">Dokumentasi kegiatan belajar mengemudi Harvard Bina Prestasi Bandung.</p>
         </div>
 
-      </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-1.png" data-title="Sesi Belajar">
+            <img src="Assets/gallery-1.png" alt="Sesi belajar mengemudi" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Sesi Belajar</h3><p class="text-gray-300 text-sm mt-1">Pembelajaran dasar mengemudi</p></div>
+          </button>
 
-    </div>
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-2.jpg" data-title="Armada Premium">
+            <img src="Assets/gallery-2.jpg" alt="Armada Harvard Bina Prestasi" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Armada Premium</h3><p class="text-gray-300 text-sm mt-1">Mobil nyaman & modern</p></div>
+          </button>
 
-  </div>
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-3.png" data-title="Latihan Parkir">
+            <img src="Assets/gallery-3.png" alt="Latihan parkir" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Latihan Parkir</h3><p class="text-gray-300 text-sm mt-1">Teknik parkir & manuver</p></div>
+          </button>
 
-<!-- FAQ -->
-<section id="faq" class="py-28 bg-black text-white overflow-hidden">
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-4.png" data-title="Instruktur Profesional">
+            <img src="Assets/gallery-4.png" alt="Instruktur Harvard Bina Prestasi" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Instruktur Profesional</h3><p class="text-gray-300 text-sm mt-1">Pendampingan belajar</p></div>
+          </button>
 
-  <div class="max-w-5xl mx-auto px-6">
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-5.jpg" data-title="Suasana Belajar">
+            <img src="Assets/gallery-5.jpg" alt="Suasana belajar mengemudi" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Suasana Belajar</h3><p class="text-gray-300 text-sm mt-1">Aman & nyaman untuk pemula</p></div>
+          </button>
 
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
-        FAQ
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Pertanyaan yang
-        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Sering Ditanyakan
-        </span>
-      </h2>
-
-      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Beberapa pertanyaan umum seputar kursus mengemudi
-        Harvard Bina Prestasi Bandung.
-      </p>
-
-    </div>
-
-    <!-- FAQ LIST -->
-    <div class="space-y-5">
-
-      <!-- ITEM -->
-      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-        <button
-          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
-
-          <span class="text-xl font-bold">
-            Apakah cocok untuk pemula?
-          </span>
-
-          <span class="faq-icon text-3xl text-yellow-400">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
-          Sangat cocok. Sistem pembelajaran kami dirancang khusus
-          untuk pemula agar lebih nyaman, santai, dan percaya diri
-          saat belajar mengemudi.
+          <button type="button" class="gallery-card group relative h-80 rounded-3xl overflow-hidden text-left fade-up" data-image="Assets/gallery-6.png" data-title="Harvard Bandung">
+            <img src="Assets/gallery-6.png" alt="Harvard Bina Prestasi Bandung" class="gallery-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5"><h3 class="text-xl font-bold">Harvard Bandung</h3><p class="text-gray-300 text-sm mt-1">Kursus mengemudi profesional</p></div>
+          </button>
         </div>
-
       </div>
+    </section>
+  </main>
 
-      <!-- ITEM -->
-      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-        <button
-          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
-
-          <span class="text-xl font-bold">
-            Apakah bisa memilih mobil manual atau matic?
-          </span>
-
-          <span class="faq-icon text-3xl text-yellow-400">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
-          Ya, tersedia pilihan mobil manual maupun matic sesuai
-          kebutuhan dan kenyamanan peserta kursus.
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-        <button
-          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
-
-          <span class="text-xl font-bold">
-            Apakah tersedia antar jemput?
-          </span>
-
-          <span class="faq-icon text-3xl text-yellow-400">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
-          Ya, untuk paket tertentu tersedia layanan antar jemput
-          area Kota Bandung dan sekitarnya.
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-        <button
-          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
-
-          <span class="text-xl font-bold">
-            Apakah instruktur bersertifikasi?
-          </span>
-
-          <span class="faq-icon text-3xl text-yellow-400">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
-          Seluruh instruktur Harvard Bina Prestasi telah memiliki
-          sertifikasi kompetensi resmi BNSP minimal Level 4.
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="faq-item bg-white/5 border border-white/10 rounded-3xl overflow-hidden">
-
-        <button
-          class="faq-btn w-full flex items-center justify-between text-left px-8 py-6">
-
-          <span class="text-xl font-bold">
-            Bagaimana cara daftar kursus?
-          </span>
-
-          <span class="faq-icon text-3xl text-yellow-400">
-            +
-          </span>
-
-        </button>
-
-        <div class="faq-content hidden px-8 pb-8 text-gray-400 leading-relaxed">
-          Anda dapat langsung menghubungi WhatsApp Harvard Bina Prestasi
-          untuk konsultasi dan pendaftaran.
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="py-28 bg-gradient-to-b from-gray-950 to-black text-white overflow-hidden">
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-20">
-
-    <!-- HEADING -->
-    <div class="text-center mb-20">
-
-      <p class="text-yellow-400 font-bold uppercase tracking-[5px] mb-4">
-        Gallery
-      </p>
-
-      <h2 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-        Momen Belajar
-        <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-          Bersama Kami
-        </span>
-      </h2>
-
-      <p class="text-gray-400 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-        Dokumentasi kegiatan belajar mengemudi Harvard Bina Prestasi Bandung.
-      </p>
-
-    </div>
-
-    <!-- GRID -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-1.png"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Sesi Belajar
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Pembelajaran dasar mengemudi
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-2.jpg"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Armada Premium
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Mobil nyaman & modern
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-3.png"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Latihan Parkir
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Teknik parkir & tanjakan
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-4.png"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Instruktur Profesional
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Bersertifikasi BNSP
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-5.jpg"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Suasana Belajar
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Aman & nyaman untuk pemula
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- ITEM -->
-      <div class="group relative overflow-hidden rounded-[32px] h-[320px]">
-
-        <img src="Assets/gallery-6.png"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-
-        <div class="absolute bottom-6 left-6">
-
-          <h3 class="text-2xl font-bold">
-            Harvard Bandung
-          </h3>
-
-          <p class="text-gray-300 text-sm mt-1">
-            Kursus mengemudi profesional
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-</section>
   <!-- FOOTER -->
-  <footer class="bg-black border-t border-white/10 py-10 text-center text-gray-500">
-    © 2026 Harvard Bina Prestasi Bandung
+  <footer class="bg-black border-t border-white/10 py-10">
+    <div class="container-premium flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <div>© 2026 Harvard Bina Prestasi Bandung</div>
+      <a href="#top" class="hover:text-white transition">Kembali ke atas ↑</a>
+    </div>
   </footer>
 
-  <!-- FLOATING WA -->
-  <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi,%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi%20di%20Harvard%20Bina%20Prestasi.%20%0ABisa%20minta%20informasi%20lengkapnya?%20Terima%20kasih." target="_blank"
-    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition hover:scale-110">
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-
-      <path
-        d="M13.601 2.326A7.854 7.854 0 0 0 8.002 0C3.58 0 0 3.582 0 8c0 1.41.368 2.786 1.067 4l-1.1 4.018 4.116-1.08A7.965 7.965 0 0 0 8.002 16c4.42 0 8-3.582 8-8a7.95 7.95 0 0 0-2.401-5.674z" />
-
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6282158567799?text=Hallo%20Admin%20Harvard%20Bina%20Prestasi%2C%0A%0ASaya%20tertarik%20untuk%20ikut%20kursus%20mengemudi.%0ABisa%20minta%20informasi%20lengkapnya%3F" target="_blank" rel="noopener" aria-label="Chat WhatsApp" class="fixed right-5 bottom-5 md:right-7 md:bottom-7 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-green-500 hover:bg-green-600 text-white flex items-center justify-center shadow-2xl transition hover:scale-110 float-slow">
+    <svg viewBox="0 0 32 32" class="w-8 h-8 fill-current" aria-hidden="true">
+      <path d="M19.11 17.21c-.28-.14-1.65-.81-1.91-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.89 1.08-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.87-2.11-.23-.55-.46-.47-.64-.48h-.55c-.19 0-.49.07-.75.35-.26.28-.99.97-.99 2.37s1.01 2.75 1.15 2.94c.14.19 1.99 3.04 4.82 4.26.67.29 1.2.46 1.61.59.68.22 1.3.19 1.79.11.55-.08 1.65-.67 1.88-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33z"/>
+      <path d="M16.01 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.46 1.72 6.4L3.1 28.8l6.55-1.72a12.75 12.75 0 0 0 6.36 1.7h.01c7.05 0 12.79-5.74 12.79-12.8S23.07 3.2 16.01 3.2zm0 23.36h-.01a10.58 10.58 0 0 1-5.39-1.48l-.39-.23-3.89 1.02 1.04-3.79-.25-.4a10.58 10.58 0 1 1 8.89 4.88z"/>
     </svg>
-
   </a>
 
-  <!-- SCRIPT -->
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-5">
+    <button id="lightbox-close" type="button" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-white text-2xl" aria-label="Tutup">×</button>
+    <div class="max-w-5xl w-full text-center">
+      <img id="lightbox-image" src="" alt="" class="max-h-[78vh] w-auto max-w-full mx-auto rounded-2xl shadow-2xl">
+      <div id="lightbox-title" class="text-white font-bold text-xl mt-4"></div>
+    </div>
+  </div>
+
   <script>
-    // NAVBAR
-    window.addEventListener("scroll", function () {
-
+    (() => {
       const navbar = document.getElementById("navbar");
+      const menuBtn = document.getElementById("menu-btn");
+      const mobilePanel = document.getElementById("mobile-panel");
 
-      if (window.scrollY > 50) {
-        navbar.classList.add(
-          "bg-black/90",
-          "backdrop-blur-lg",
-          "shadow-2xl"
-        );
-      } else {
-        navbar.classList.remove(
-          "bg-black/90",
-          "backdrop-blur-lg",
-          "shadow-2xl"
-        );
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("nav-scrolled", window.scrollY > 20);
+      }, { passive: true });
+
+      menuBtn?.addEventListener("click", () => {
+        const open = mobilePanel.classList.toggle("mobile-open");
+        mobilePanel.classList.toggle("hidden", !open);
+        menuBtn.setAttribute("aria-expanded", String(open));
+        menuBtn.textContent = open ? "×" : "☰";
+      });
+
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+          mobilePanel?.classList.remove("mobile-open");
+          mobilePanel?.classList.add("hidden");
+          menuBtn?.setAttribute("aria-expanded", "false");
+          if (menuBtn) menuBtn.textContent = "☰";
+        });
+      });
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+
+      document.querySelectorAll(".faq-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".faq-item");
+          const wasOpen = item.classList.contains("open");
+
+          document.querySelectorAll(".faq-item.open").forEach(openItem => {
+            if (openItem !== item) openItem.classList.remove("open");
+          });
+
+          item.classList.toggle("open", !wasOpen);
+        });
+      });
+
+      const slider = document.getElementById("testimonial-slider");
+      let slideIndex = 0;
+
+      function moveTestimonials() {
+        if (!slider) return;
+        const card = slider.querySelector(".testimonial-card");
+        if (!card) return;
+
+        const gap = 20;
+        const cardWidth = card.getBoundingClientRect().width + gap;
+        const visible = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+        const total = slider.children.length;
+        const maxIndex = Math.max(0, total - visible);
+
+        slideIndex = slideIndex >= maxIndex ? 0 : slideIndex + 1;
+        slider.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
       }
 
-    });
+      let sliderTimer = setInterval(moveTestimonials, 3500);
+      window.addEventListener("resize", () => {
+        slideIndex = 0;
+        if (slider) slider.style.transform = "translateX(0)";
+      });
 
-
-    // MOBILE MENU
-    const btn = document.getElementById("menu-btn");
-const menu = document.getElementById("nav-menu");
-const backdrop = document.getElementById("backdrop");
-
-if (btn && menu) {
-
-  btn.addEventListener("click", () => {
-
-    menu.classList.toggle("hidden");
-    backdrop.classList.toggle("hidden");
-
-  });
-
-  // klik backdrop = tutup menu
-  backdrop.addEventListener("click", () => {
-
-    menu.classList.add("hidden");
-    backdrop.classList.add("hidden");
-
-  });
-
-}    
-
-    // TESTIMONIAL SLIDER
-    const slider = document.getElementById("testimonial-slider");
-    if (slider) {
-        let index = 0;
-        
-        function slideTestimoni() {
-          const cards = slider.children;
-          const total = cards.length;
-          index++;
-          if (index >= total) {
-            index = 0;
-          }
-          const cardWidth = cards[0].offsetWidth +16;
-          slider.style.transform =
-          `translateX(-${index * cardWidth}px)`;
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearInterval(sliderTimer);
+        } else {
+          sliderTimer = setInterval(moveTestimonials, 3500);
         }
-        setInterval(slideTestimoni, 3000);
+      });
+
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightbox-image");
+      const lightboxTitle = document.getElementById("lightbox-title");
+
+      document.querySelectorAll(".gallery-card").forEach(card => {
+        card.addEventListener("click", () => {
+          lightboxImage.src = card.dataset.image;
+          lightboxImage.alt = card.dataset.title || "";
+          lightboxTitle.textContent = card.dataset.title || "";
+          lightbox.classList.add("open");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        document.body.style.overflow = "";
       }
 
- // FAQ ACCORDION
- const faqBtns = document.querySelectorAll(".faq-btn");
-
- faqBtns.forEach((btn) => {
-
-   btn.addEventListener("click", () => {
-
-     const content = btn.nextElementSibling;
-     const icon = btn.querySelector(".faq-icon");
-
-     content.classList.toggle("hidden");
-
-     if (content.classList.contains("hidden")) {
-       icon.textContent = "+";
-     } else {
-       icon.textContent = "−";
-     }
-
-   });
-
- });
-
-
+      document.getElementById("lightbox-close")?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    })();
   </script>
-
 </body>
 </html>
